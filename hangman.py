@@ -54,9 +54,7 @@ def displayBoard(missedLetters, correctLetters, secretWord):
 #replace blanks with secret word   
     for i in range(len(secretWord)):
         if secretWord[i] in correctLetters:
-            blanks = blanks[:i] + secretWord[i] + blanks[i+1:] 
-#mess with the above line when finished.  Still a little unclear how this works- 
-#probable answer- "blanks" is a continually updated variable
+            blanks = blanks[:i] + secretWord[i] + blanks[i+1:]
 
     for letter in blanks:
         print(letter, end=' ')
