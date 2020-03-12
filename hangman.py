@@ -34,6 +34,16 @@ HANGMAN_PICS = ['''
  O   |
 /|\  |
 / \  |
+    ===''','''
+ +---+
+[O   |
+/|\  |
+/ \  |
+    ===''','''
+ +---+
+[O]  |
+/|\  |
+/ \  |
     ===''']
 
 words = 'pizza burrito pie orange chips cake'.split()
