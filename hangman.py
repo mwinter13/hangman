@@ -46,7 +46,7 @@ HANGMAN_PICS = ['''
 / \  |
     ===''']
 
-words = 'pizza burrito pie orange chips cake'.split()
+words = 'pizza burrito pie orange chips cake taco sandwich'.split()
 
 #this function returns a random word from a list that you enter
 def getRandomWord(wordList):
