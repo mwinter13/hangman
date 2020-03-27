@@ -46,12 +46,17 @@ HANGMAN_PICS = ['''
 / \  |
     ===''']
 
-words = 'pizza burrito pie orange chips cake taco sandwich'.split()
+words = {'food':'pizza burrito pie orange chips cake taco sandwich'.split(),
+'animals':'cheetah dog cat mole bird spider bear worm fly'.split(),
+'furniture':'couch table bed television chair'.split()}
 
 #this function returns a random word from a list that you enter
-def getRandomWord(wordList):
-    randomIndex = random.randint(0, len(wordList)-1)
-    return wordList[randomIndex]
+def getRandomWord(wordDict):
+    #randomly select key from dict
+    wordKey = random.choice(list(words.keys()))
+    #now, once the key is selected, use the following to pick a random word from it's values
+    wordIndex = random.randint[0, len(wordDict(wordKey-1))]
+    return (wordDict[wordKey][wordIndex], wordKey)
 
 def displayBoard(missedLetters, correctLetters, secretWord):
     print(HANGMAN_PICS[len(missedLetters)])
