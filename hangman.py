@@ -55,7 +55,7 @@ def getRandomWord(wordDict):
     #randomly select key from dict
     wordKey = random.choice(list(words.keys()))
     #now, once the key is selected, use the following to pick a random word from it's values
-    wordIndex = random.randint[0, len(wordDict(wordKey-1))]
+    wordIndex = random.randint(0, len(wordDict[wordKey])-1)
     return (wordDict[wordKey][wordIndex], wordKey)
 
 def displayBoard(missedLetters, correctLetters, secretWord):
@@ -96,6 +96,18 @@ def playAgain():
     return input().lower().startswith('y')
     
 print('WELCOME TO HANGMAN!')
+difficulty = 'N'
+#reference note- HANGMAN_PICS ranges from [0] to [8] with first full man at [6]
+while difficulty not in ['E', 'M', 'H', 'I']:
+    print ('Choose difficulty. E = Easy, M = Medium, H = Hard, I = Impossible')
+    difficulty = input().upper()
+if difficulty == 'M':
+    del HANGMAN_PICS[7:9]
+if difficulty == 'H':
+    del HANGMAN_PICS[1:9:2]
+if difficulty == 'I':
+    del HANGMAN_PICS[1:7]
+
 missedLetters = ''
 correctLetters = ''
 secretWord = getRandomWord(words)
@@ -117,7 +129,7 @@ while True:
     else:
         missedLetters = missedLetters + guess
         if len(missedLetters) == len(HANGMAN_PICS) - 1:
-            print('You have run out of guesses! \nAfter ' + str(len(missedLetters)) + ' missed guesses, the word was ' + secretWord)
+            print('You have run out of guesses! \nAfter ' + str(len(missedLetters)) + ' missed guesses, the word was ' + str(secretWord))
             gameIsDone = True
 
     if gameIsDone:
