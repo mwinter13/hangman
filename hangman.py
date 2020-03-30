@@ -56,7 +56,8 @@ def getRandomWord(wordDict):
     wordKey = random.choice(list(words.keys()))
     #now, once the key is selected, use the following to pick a random word from it's values
     wordIndex = random.randint(0, len(wordDict[wordKey])-1)
-    return (wordDict[wordKey][wordIndex], wordKey)
+    #add ---, wordKey--- as second return value after next code update?
+    return (wordDict[wordKey][wordIndex])
 
 def displayBoard(missedLetters, correctLetters, secretWord):
     print(HANGMAN_PICS[len(missedLetters)])
