@@ -56,8 +56,8 @@ def getRandomWord(wordDict):
     wordKey = random.choice(list(words.keys()))
     #now, once the key is selected, use the following to pick a random word from it's values
     wordIndex = random.randint(0, len(wordDict[wordKey])-1)
-    #add ---, wordKey--- as second return value after next code update?
-    return (wordDict[wordKey][wordIndex])
+    #[wordIndex] is returned to give secretSet in "secretWord, secretSet = getRandomWord(words)" a value
+    return (wordDict[wordKey][wordIndex], [wordKey])
 
 def displayBoard(missedLetters, correctLetters, secretWord):
     print(HANGMAN_PICS[len(missedLetters)])
@@ -111,10 +111,12 @@ if difficulty == 'I':
 
 missedLetters = ''
 correctLetters = ''
-secretWord = getRandomWord(words)
+#remember- getRandomWord(words) returns two values
+secretWord, secretSet = getRandomWord(words)
 gameIsDone = False
 
 while True:
+    print('Your secret word is in the set: ' + str(secretSet) + '.')
     displayBoard(missedLetters, correctLetters, secretWord)
     guess = getGuess(correctLetters + missedLetters)
     if guess in secretWord:
@@ -137,7 +139,7 @@ while True:
         if playAgain():
             missedLetters = ''
             correctLetters = ''
-            secretWord = getRandomWord(words)
+            secretWord, secretSet = getRandomWord(words)
             gameIsDone = False
         else:
             break
